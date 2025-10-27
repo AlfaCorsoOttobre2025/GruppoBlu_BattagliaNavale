@@ -1,6 +1,6 @@
 package battagliaNavale;
-import BattagliaNavale.Board;
-import BattagliaNavale.Nave;
+import battagliaNavale.Board;
+import battagliaNavale.Nave;
 
 import java.util.Scanner;
 public class BattagliaNavale {

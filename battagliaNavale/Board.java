@@ -5,12 +5,15 @@ public class Board{
 	static String[] attacchi={};
 	static Nave[] navi={};
 	static final int dimensioniBoard = 10;
+	static int punteggio =0;
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
+		return false;
 	}
 	public void posizionaRandom(){
 		for(int i=0; i<tipiNave.length; i++){
-			posizionaNave();
+			//posizionaNave();
+			System.out.println("Entrato");
 		}
 	}
 	
@@ -18,9 +21,15 @@ public class Board{
 	//controlla se già in attacchi
 	public void attaccoCoordinata(String coord){
 		int result=0;
-		for(int i=0; i<Navi; i++){
+		for(int i=0; i<navi.length; i++){
 			result = navi[i].attacco(coord);
 			if(result!=0){
+				if(result==1){
+					System.out.println("Colpito!");
+				}else{
+					System.out.println("Colpito e Affondato!");
+					punteggio++;
+				}
 				break;
 			}
 		}
