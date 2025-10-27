@@ -5,45 +5,47 @@ dato un array di 100 elementi generato casualmente con interi da
 - quante volte è ripetuto
 - in che posizioni posso trovare il numero
  */
+package battagliaNavale;
 import java.util.Scanner;
 import java.util.Arrays;
-package GruppoBlu_BattagliaNavale;
 
 public class Nave{
 
-    static int hit;
-    static String[] coord;
-    static boolean[] colpi; //false di default
+    static int len; // lunghezza nave
+    static int colpiRimanenti; 
+    static String[] coord; // coordinate nave
+    static boolean[] colpi; // booleano di punti colpiti
 
-    public static void attacco (String inputAttack) { 
+    public static void initNave (int len) { // inizializzazione dei parametri nave in base alla sua lunghezza
+        coord = new String[len]; 
+        colpi = new boolean[len];
+        colpiRimanenti = len;
+    }
+
+    public static int attacco (String inputAttack) { 
+        int stato = 0; // 0 non colpito; 1 colpito; 2 colpito e affondato.
         try {
-            int stato = 0; // 0 non colpito; 1 colpito; 2 colpito e affondato.
-
-            for (i=0; i<coord.length(); i++) {
+            for (int i=0; i<len; i++) {
                 if (coord[i].equals(inputAttack)) {
-                    hit--;
+                    colpiRimanenti--;
                     colpi[i]=true;
                     stato = 1;
-                    break
+                    break;
                 }
             }
 
-            if (colpito) {
-                
-
-                } else {
-
+            if (stato==1) {
+                if (colpiRimanenti==0) {
+                    stato=2;
                 }
-                
-            } else {
-                System.out.print("Nave mancata.")
             }
+            
 
         } catch (Exception e){
             String mess = e.getMessage();
                 System.err.println(mess);
                 System.exit(0);
         }
-        return stato;
+        return stato;        
     }
 }
