@@ -6,10 +6,61 @@ public class Board{
 	static Nave[] navi={};
 	static final int dimensioniBoard = 10;
 	static int punteggio =0;
+	static final String letters = "ABCDEFGHIJ";
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
+		boolean ori = orientamento.equals("v") ? true : false;
+		int[] numericCoord(coord);
+		if (inBoard(lunghezzaNave,numericCoord, ori)){
+			
+		}
+		
 		return false;
 	}
+	public boolean aggiungiNave(lunghezzaNave,coord, ori){
+		String currentCoord={};
+		boolean ok=true;
+		for (int i=0; i<navi.length; i++){
+			currentCoord = Arrays.copyOf(navi[i].coord,navi[i].coord.length);
+			for (j=0; j<currentCoord;j++){
+				if(coord.equals(currentCoord[j])){
+					ok=false;
+					break;
+				}
+			}
+			if(!ok){
+				break;
+			}
+		}
+		
+		if(ok){
+			
+		}
+		return ok;
+	}
+	
+	
+	public boolean inBoard(int lunghezzaNave,int[] numericCoord, boolean ori){ //true = varticale
+		boolean result=false;
+		if (ori){
+			if (numericCoord[0]<11 && numericCoord[0]>0 && numericCoord[1]+lunghezzaNave<11 && numericCoord[1]>0){
+			result=true;
+		}else{
+			if (numericCoord[0]+lunghezzaNave<11 && numericCoord[0]>0 && numericCoord[1]<11 && numericCoord[1]>0){
+			result=true;
+		}
+		
+		return result;
+	}
+	
+	public int[] parseCoordLetter(String coord){
+		//A-1
+		String[] info= coord.split("-");
+		int coordNum = letters.indexOf(info[0])+1;
+		int[] numericCoord= {coordNum, Integer.parseInt(info[1])};
+		return numericCoord;
+	}
+	
 	public void posizionaRandom(){
 		for(int i=0; i<tipiNave.length; i++){
 			//posizionaNave();
