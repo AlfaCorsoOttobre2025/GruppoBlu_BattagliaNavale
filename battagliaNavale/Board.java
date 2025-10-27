@@ -73,17 +73,25 @@ public class Board{
 		return numericCoord;
 	}
 	
-	/*public void posizionaRandom(){
+	public void posizionaRandom(){
 		Random rnd = new Random(42L);
 		int counterNavi=0;
+		boolean result= false;
 		do{
-			String letter = letters.indexOf(rnd.nextInt(dimensioniBoard)+1);
-		}while(counterNavi != tipiNave.length)
-		for(int i=0; i<tipiNave.length; i++){
-			//posizionaNave();
-			System.out.println("Entrato");
-		}
-	}*/
+			int idxRnd = letters.indexOf(rnd.nextInt(dimensioniBoard));
+			String letter = letters.charAt(idxRnd)+"";
+			int vert = rnd.nextInt(dimensioniBoard)+1;
+			String coord= letter+"-"+vert;
+			String orientamento = (rnd.nextInt(dimensioniBoard)+1)%2 ==0 ? "v" :"o";
+			result= posizionaNave(tipiNave[counterNavi], coord, orientamento);
+			if(result){
+				counterNavi++;
+			}
+			
+		}while(counterNavi != tipiNave.length);
+		
+		
+	}
 	
 	
 	//controlla se già in attacchi
