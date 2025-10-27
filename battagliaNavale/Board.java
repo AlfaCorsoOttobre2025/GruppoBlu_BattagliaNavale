@@ -1,5 +1,6 @@
 package battagliaNavale;
 import battagliaNavale.Nave;
+import java.util.Arrays;
 public class Board{
 	static final int[] tipiNave = {2,3,3,4}; //lunghezza delle navi
 	static String[] attacchi={};
@@ -10,19 +11,21 @@ public class Board{
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
 		boolean ori = orientamento.equals("v") ? true : false;
-		int[] numericCoord(coord);
+		int[] numericCoord=parseCoordLetter(coord);
+		boolean result=false;
 		if (inBoard(lunghezzaNave,numericCoord, ori)){
-			
+			result = aggiungiNave(lunghezzaNave,coord,numericCoord, ori);
 		}
 		
-		return false;
+		return result;
 	}
-	public boolean aggiungiNave(lunghezzaNave,coord, ori){
-		String currentCoord={};
+	public boolean aggiungiNave(int lunghezzaNave, String coord, int[] numericCoord, boolean ori){
+		String[] currentCoord={};
 		boolean ok=true;
+		
 		for (int i=0; i<navi.length; i++){
 			currentCoord = Arrays.copyOf(navi[i].coord,navi[i].coord.length);
-			for (j=0; j<currentCoord;j++){
+			for (int j=0; j<currentCoord.length;j++){
 				if(coord.equals(currentCoord[j])){
 					ok=false;
 					break;
@@ -34,26 +37,32 @@ public class Board{
 		}
 		
 		if(ok){
-			
+			Nave nuovaNave = new Nave();
+			nuovaNave.initNave(lunghezzaNave,numericCoord, ori);
+			navi= Arrays.copyOf(navi, navi.length+1);
+			navi[navi.length-1]=nuovaNave;
 		}
 		return ok;
 	}
 	
 	
-	public boolean inBoard(int lunghezzaNave,int[] numericCoord, boolean ori){ //true = varticale
+	public boolean inBoard(int lunghezzaNave,int[] numericCoord, boolean ori){ 
+		//true = varticale
 		boolean result=false;
 		if (ori){
 			if (numericCoord[0]<11 && numericCoord[0]>0 && numericCoord[1]+lunghezzaNave<11 && numericCoord[1]>0){
-			result=true;
+				result=true;
+			}
 		}else{
 			if (numericCoord[0]+lunghezzaNave<11 && numericCoord[0]>0 && numericCoord[1]<11 && numericCoord[1]>0){
-			result=true;
+				result=true;
+			}
 		}
 		
 		return result;
 	}
 	
-	public int[] parseCoordLetter(String coord){
+	public static int[] parseCoordLetter(String coord){
 		//A-1
 		String[] info= coord.split("-");
 		int coordNum = letters.indexOf(info[0])+1;
