@@ -1,5 +1,6 @@
 package battagliaNavale;
 import battagliaNavale.Nave;
+import java.util.Arrays;
 public class Board{
 	static final int[] tipiNave = {2,3,3,4}; //lunghezza delle navi
 	static String[] attacchi={};
@@ -10,22 +11,40 @@ public class Board{
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
 		boolean ori = orientamento.equals("v") ? true : false;
+<<<<<<< HEAD
 		//int[] numericCoord(coord);
+=======
+		int[] numericCoord=parseCoordLetter(coord);
+		boolean result=false;
+>>>>>>> 56d653f43715bc12e99d7b63c78aff6018551c52
 		if (inBoard(lunghezzaNave,numericCoord, ori)){
-			
+			result = aggiungiNave(lunghezzaNave,coord,numericCoord, ori);
 		}
 		
-		return false;
+		return result;
 	}
+<<<<<<< HEAD
 	public boolean aggiungiNave(int lunghezzaNave,String coord, String ori){
 		String currentCoord={};
+=======
+	public boolean aggiungiNave(int lunghezzaNave, String coord, int[] numericCoord, boolean ori){
+		String[] currentCoord={};
+>>>>>>> 56d653f43715bc12e99d7b63c78aff6018551c52
 		boolean ok=true;
+		
 		for (int i=0; i<navi.length; i++){
 			currentCoord = Arrays.copyOf(navi[i].coord,navi[i].coord.length);
+<<<<<<< HEAD
 			for (j=0; j<currentCoord;j++){
 				//if(coord.equals(currentCoord[j])){
 				//	ok=false;
 			//		break;
+=======
+			for (int j=0; j<currentCoord.length;j++){
+				if(coord.equals(currentCoord[j])){
+					ok=false;
+					break;
+>>>>>>> 56d653f43715bc12e99d7b63c78aff6018551c52
 				}
 			}
 			//if(!ok){
@@ -34,20 +53,26 @@ public class Board{
 		//}
 		
 		if(ok){
-			
+			Nave nuovaNave = new Nave();
+			nuovaNave.initNave(lunghezzaNave,numericCoord, ori);
+			navi= Arrays.copyOf(navi, navi.length+1);
+			navi[navi.length-1]=nuovaNave;
 		}
 		return ok;
 	}
 	
 	
-	public boolean inBoard(int lunghezzaNave,int[] numericCoord, boolean ori){ //true = varticale
+	public boolean inBoard(int lunghezzaNave,int[] numericCoord, boolean ori){ 
+		//true = varticale
 		boolean result=false;
 		if (ori){
 			if (numericCoord[0]<11 && numericCoord[0]>0 && numericCoord[1]+lunghezzaNave<11 && numericCoord[1]>0){
-			result=true;
+				result=true;
+			}
 		}else{
 			if (numericCoord[0]+lunghezzaNave<11 && numericCoord[0]>0 && numericCoord[1]<11 && numericCoord[1]>0){
-			result=true;
+				result=true;
+			}
 		}
 		}
 		}
