@@ -13,7 +13,7 @@ public class Nave{
 
     public String invertParseCoordLetter(int [] numericCoord){
 		//
-        String coordinata = letters.charAt(numericCoord[0]-1)+"-"+letters.charAt(numericCoord[1]);
+        String coordinata = letters.charAt(numericCoord[0]-1)+"-"+numericCoord[1];
 		return coordinata;
 	}
 

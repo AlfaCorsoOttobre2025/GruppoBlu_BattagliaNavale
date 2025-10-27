@@ -14,46 +14,30 @@ public class Board{
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
 		boolean ori = orientamento.equals("v") ? true : false;
-<<<<<<< HEAD
-		//int[] numericCoord(coord);
-=======
 		int[] numericCoord=parseCoordLetter(coord);
 		boolean result=false;
->>>>>>> 56d653f43715bc12e99d7b63c78aff6018551c52
 		if (inBoard(lunghezzaNave,numericCoord, ori)){
 			result = aggiungiNave(lunghezzaNave,coord,numericCoord, ori);
 		}
 		
 		return result;
 	}
-<<<<<<< HEAD
-	public boolean aggiungiNave(int lunghezzaNave,String coord, String ori){
-		String currentCoord={};
-=======
 	public boolean aggiungiNave(int lunghezzaNave, String coord, int[] numericCoord, boolean ori){
 		String[] currentCoord={};
->>>>>>> 56d653f43715bc12e99d7b63c78aff6018551c52
 		boolean ok=true;
 		
 		for (int i=0; i<navi.length; i++){
 			currentCoord = Arrays.copyOf(navi[i].coord,navi[i].coord.length);
-<<<<<<< HEAD
-			for (j=0; j<currentCoord;j++){
-				//if(coord.equals(currentCoord[j])){
-				//	ok=false;
-			//		break;
-=======
 			for (int j=0; j<currentCoord.length;j++){
 				if(coord.equals(currentCoord[j])){
 					ok=false;
 					break;
->>>>>>> 56d653f43715bc12e99d7b63c78aff6018551c52
 				}
 			}
-			//if(!ok){
-		//		break;
-		//	}
-		//}
+			if(!ok){
+				break;
+			}
+		}
 		
 		if(ok){
 			Nave nuovaNave = new Nave();
@@ -63,6 +47,7 @@ public class Board{
 		}
 		return ok;
 	}
+
 	
 	
 	public boolean inBoard(int lunghezzaNave,int[] numericCoord, boolean ori){ 
@@ -76,8 +61,6 @@ public class Board{
 			if (numericCoord[0]+lunghezzaNave<11 && numericCoord[0]>0 && numericCoord[1]<11 && numericCoord[1]>0){
 				result=true;
 			}
-		}
-		}
 		}
 		return result;
 	}
@@ -95,7 +78,8 @@ public class Board{
 		int counterNavi=0;
 		boolean result= false;
 		do{
-			int idxRnd = letters.indexOf(rnd.nextInt(dimensioniBoard));
+			int idxRnd = rnd.nextInt(dimensioniBoard);
+			System.out.println(idxRnd);
 			String letter = letters.charAt(idxRnd)+"";
 			int vert = rnd.nextInt(dimensioniBoard)+1;
 			String coord= letter+"-"+vert;
@@ -131,7 +115,24 @@ public class Board{
 	
 	
 	public void stampaBoard(){
-
+		 String []str={"A","B","C","D","E","F","G","H","I","J"};
+        System.out.print(" ");
+        for(int i=0;i<=str.length;i++){
+            if(i==0){
+                for(int j=0;j<str.length;j++){
+                    System.out.print(str[j]+" ");
+                }
+            }
+            for(int j=0;j<=str.length;j++){
+                if(j==0){
+                    System.out.println(i);
+                }else{
+                    for(int n=0;n<navi.length;n++){
+						//if(navi[i].coord.equals())
+                    }
+                }
+            }
+		}
 	}
 	
 	public void stampaAttachi(Board boardComputer){
