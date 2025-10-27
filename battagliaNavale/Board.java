@@ -10,28 +10,28 @@ public class Board{
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
 		boolean ori = orientamento.equals("v") ? true : false;
-		int[] numericCoord(coord);
+		//int[] numericCoord(coord);
 		if (inBoard(lunghezzaNave,numericCoord, ori)){
 			
 		}
 		
 		return false;
 	}
-	public boolean aggiungiNave(lunghezzaNave,coord, ori){
+	public boolean aggiungiNave(int lunghezzaNave,String coord, String ori){
 		String currentCoord={};
 		boolean ok=true;
 		for (int i=0; i<navi.length; i++){
 			currentCoord = Arrays.copyOf(navi[i].coord,navi[i].coord.length);
 			for (j=0; j<currentCoord;j++){
-				if(coord.equals(currentCoord[j])){
-					ok=false;
-					break;
+				//if(coord.equals(currentCoord[j])){
+				//	ok=false;
+			//		break;
 				}
 			}
-			if(!ok){
-				break;
-			}
-		}
+			//if(!ok){
+		//		break;
+		//	}
+		//}
 		
 		if(ok){
 			
@@ -49,11 +49,12 @@ public class Board{
 			if (numericCoord[0]+lunghezzaNave<11 && numericCoord[0]>0 && numericCoord[1]<11 && numericCoord[1]>0){
 			result=true;
 		}
-		
+		}
+		}
 		return result;
 	}
 	
-	public int[] parseCoordLetter(String coord){
+	public static int[] parseCoordLetter(String coord){
 		//A-1
 		String[] info= coord.split("-");
 		int coordNum = letters.indexOf(info[0])+1;
