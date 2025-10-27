@@ -9,14 +9,33 @@ public class Nave{
     static int colpiRimanenti; 
     static String[] coord; // coordinate nave
     static boolean[] colpi; // booleano di punti colpiti
+    static final String letters = "ABCDEFGHIJ";
 
-    public static void initNave (int len) { // inizializzazione dei parametri nave in base alla sua lunghezza
-        coord = new String[len]; 
-        colpi = new boolean[len];
+    public String invertParseCoordLetter(int [] numericCoord){
+		//
+        String coordinata = letters.charAt(numericCoord[0])+"-"+letters.charAt(numericCoord[1]);
+		return coordinata;
+	}
+
+    public void initNave (int len, int[] posizione1; boolean orientamento) { // inizializzazione dei parametri nave in base alla sua lunghezza
+        coord = new String[len];
+        colpi = new boolean[len]; //di default a false
         colpiRimanenti = len;
+        if (orientamento) { //vertical
+            for (int i=0; i<len; i++) {
+                int[] pos = {posizione1[0]+i,posizione1[1]};
+                coord[i]=invertParseCoordLetter(pos);
+            }   
+        } else {
+            for (int i=0; i<len; i++) {
+                int[] pos = {posizione1[0],posizione1[1]}+i;
+                coord[i]=invertParseCoordLetter(pos);
+            }
+        }
+        
     }
 
-    public static int attacco (String inputAttack) { 
+    public int attacco (String inputAttack) { 
         int stato = 0; // 0 non colpito; 1 colpito; 2 colpito e affondato.
         try {
             for (int i=0; i<len; i++) {

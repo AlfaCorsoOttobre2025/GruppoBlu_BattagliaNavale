@@ -3,7 +3,7 @@
 
 ## Classe Nave
 
-La classe nave crea un'oggetto nave inizializzando in base alla variabile `len` (dimensione nave) i seguenti paramatri di classe:
+La classe nave crea un'oggetto nave inizializzando in base alle variabile `len` (dimensione nave), `posizione1` (inizio della nave), `orientamento` i seguenti paramatri di classe:
 - int `colpiRimanenti`: indica il numero di colpi mancanti per affondare la nave.
 - String[ ] `coord`: array contenente le coordinate della nave in stringa (es. "A-3").
 - boolean[ ] `colpi`: array booleano che indica in **true** gli indici delle coordinate colpite.
