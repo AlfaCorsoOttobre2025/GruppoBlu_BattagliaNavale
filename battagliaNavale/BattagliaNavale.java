@@ -1,3 +1,4 @@
+package battagliaNavale;
 import BattagliaNavale.Board;
 import BattagliaNavale.Nave;
 import java.util.Scanner;

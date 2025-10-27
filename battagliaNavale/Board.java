@@ -1,9 +1,10 @@
-
+package battagliaNavale;
+import battagliaNavale.Nave;
 public class Board{
-	static final int[] tipiNave = [2,3,3,4]; //lunghezza delle navi
+	static final int[] tipiNave = {2,3,3,4}; //lunghezza delle navi
 	static String[] attacchi={};
 	static Nave[] navi={};
-	
+	static final int dimensioniBoard = 10;
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
 	}
@@ -13,9 +14,19 @@ public class Board{
 		}
 	}
 	
-	public void attaccoCoordiata(String coord){
-
+	
+	//controlla se già in attacchi
+	public void attaccoCoordinata(String coord){
+		int result=0;
+		for(int i=0; i<Navi; i++){
+			result = navi[i].attacco(coord);
+			if(result!=0){
+				break;
+			}
+		}
 	}
+	
+	
 	
 	public void stampaBoard(){
 
