@@ -13,11 +13,11 @@ public class Nave{
 
     public String invertParseCoordLetter(int [] numericCoord){
 		//
-        String coordinata = letters.charAt(numericCoord[0])+"-"+letters.charAt(numericCoord[1]);
+        String coordinata = letters.charAt(numericCoord[0]-1)+"-"+letters.charAt(numericCoord[1]);
 		return coordinata;
 	}
 
-    public void initNave (int len, int[] posizione1; boolean orientamento) { // inizializzazione dei parametri nave in base alla sua lunghezza
+    public void initNave (int len, int[] posizione1, boolean orientamento) { // inizializzazione dei parametri nave in base alla sua lunghezza
         coord = new String[len];
         colpi = new boolean[len]; //di default a false
         colpiRimanenti = len;
@@ -28,7 +28,7 @@ public class Nave{
             }   
         } else {
             for (int i=0; i<len; i++) {
-                int[] pos = {posizione1[0],posizione1[1]}+i;
+                int[] pos = {posizione1[0],posizione1[1]+i};
                 coord[i]=invertParseCoordLetter(pos);
             }
         }
