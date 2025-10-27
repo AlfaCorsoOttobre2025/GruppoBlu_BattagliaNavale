@@ -1,6 +1,8 @@
 package battagliaNavale;
 import battagliaNavale.Nave;
 import java.util.Arrays;
+import java.util.Random;
+
 public class Board{
 	static final int[] tipiNave = {2,3,3,4}; //lunghezza delle navi
 	static String[] attacchi={};
@@ -8,6 +10,7 @@ public class Board{
 	static final int dimensioniBoard = 10;
 	static int punteggio =0;
 	static final String letters = "ABCDEFGHIJ";
+	
 	public boolean posizionaNave(int lunghezzaNave, String coord, String orientamento){
 		//entra dentro board? -> si sovrappone a navi? -> true/false
 		boolean ori = orientamento.equals("v") ? true : false;
@@ -70,12 +73,17 @@ public class Board{
 		return numericCoord;
 	}
 	
-	public void posizionaRandom(){
+	/*public void posizionaRandom(){
+		Random rnd = new Random(42L);
+		int counterNavi=0;
+		do{
+			String letter = letters.indexOf(rnd.nextInt(dimensioniBoard)+1);
+		}while(counterNavi != tipiNave.length)
 		for(int i=0; i<tipiNave.length; i++){
 			//posizionaNave();
 			System.out.println("Entrato");
 		}
-	}
+	}*/
 	
 	
 	//controlla se già in attacchi
